@@ -93,6 +93,11 @@ public class JogoForca {
                     System.out.println("Parabéns Você Venceu o Jogo Acertando a Palavra: " +palavra); 
                     System.exit(0);
                 }else{
+                    System.out.print("Palavra: ");
+                    for(int i = 0; i < vetorVerdadeiro.length; i++){
+                        System.out.print(vetorVerdadeiro[i]+" ");
+                    }
+                    
                     vida--;
                     System.out.println("Que pena Você Errou a Palavra a Ser Advinhada");
                     System.out.println("Agora Você Tem um Total de: "+vida+" Vidas");
