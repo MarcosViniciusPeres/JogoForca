@@ -7,30 +7,23 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Vini
- */
 public class JogoForca {
     Scanner leitor = new Scanner(System.in);
-    int vida = 5;
+    int vida = 5; 
     char[] vetorVerdadeiro = new char[10];
-    int auxiliar = 0;
-    int auxiliarEscolher = 0;
-    List<String> vetorAuxiliar = new ArrayList();
+    int auxiliar = 0; //Auxiliar que irá controlar, para que o array comece com _ _ _ _ _ _
+    int auxiliarEscolher = 0; //Auxiliar, para que a pessoa não escolha a opção 1, varias vezes
+    List<String> vetorAuxiliar = new ArrayList(); //Vetor auxiliar para guardar as letra que já foram usadas, mesmo errando ou acertando.
     
+    
+    //Função para perguntar com qual conteudo se queira jogar.
     public String [] escolhaConteudo(){
         
         if(auxiliarEscolher == 0){
             auxiliarEscolher++;
             int variavelConteudo = 0;
 
+            //Try catch para o caso da pessoa apertar uma letra ao invés de numero.
             try {
                System.out.println("Digite [1] para escolher Animal ou Digite [2] para escolher Fruta \n");      
                variavelConteudo = leitor.nextInt();
@@ -61,13 +54,16 @@ public class JogoForca {
         return null;   
     }  
     
+    //Função para sortear a Palavra aleatoriamente
     public String sortearPalavra(String[] conteudo){
         if(conteudo != null){
         
             String palavraEscolhida;
             
+            
             Random gerador = new Random();
             
+            //Vai escolher a palavra de acordo com o tamanho do vetor de animal ou fruta escolhido.
             palavraEscolhida = conteudo[gerador.nextInt(conteudo.length)];
             
             System.out.println("Sua Palavra Foi Sorteada com Sucesso. Bora Jogar ?");
@@ -79,6 +75,7 @@ public class JogoForca {
         return null;
     }  
     
+    //Função que vai verificar se a pessoa vai acertar a palavra inteira
     public void acertarPalavra(String palavra){     
         Scanner leitor = new Scanner(System.in);
         if(vida != 0){ 
@@ -113,6 +110,7 @@ public class JogoForca {
        }
     }  
     
+    //Função que vai verificar se existe uma letra que bate com a palavra escolhida.
     public void acertarLetra(String palavra){
         Scanner leitor = new Scanner(System.in);
         if(vida != 0){
@@ -126,6 +124,7 @@ public class JogoForca {
                 String letra;
                 char [] vetorChar = palavra.toCharArray();
                  
+                //Inicia o vetor com os _ _ _ _ _ _
                 if(auxiliar < vetorChar.length){
                     for(int i = 0; i < vetorChar.length; i++){
                         vetorVerdadeiro[i] = '_';
@@ -164,6 +163,7 @@ public class JogoForca {
                     }     
                 }
                 
+                //Transforma o vetor por fim em String para verificar se a pessoa ganhou o jogo.
                 String str = new String(vetorVerdadeiro);
                 
                 if(palavra.equals(str.trim())){
