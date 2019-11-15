@@ -36,9 +36,10 @@ public class JogoForca {
                variavelConteudo = leitor.nextInt();
 
             } catch (InputMismatchException E) {
-                System.out.println("Digite um numero valido");
+                System.out.println("Por favor!!! Digite um valor Numérico Válido");
                 return null;
             }
+            
             if(variavelConteudo == 1 || variavelConteudo == 2){
                 if(variavelConteudo == 1){
                     System.out.println("Conteudo Animal Foi Escolhido");
